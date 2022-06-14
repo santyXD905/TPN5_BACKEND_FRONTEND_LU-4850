@@ -1,0 +1,68 @@
+<!-------------------------------------formulario----------------------->
+<div class="d-flex justify-content-center pt-5 ">
+      <form #pasajeForm="ngForm" class="row col-6">
+            <div class="mb-3">
+                <label class="form-label">DNI de Pasajero </label>
+                <select class="form-select" [(ngModel)]="pasaje.pasajero" #pasajero="ngModel" name="DNI" required>
+                <option *ngFor="let pas of pasajeros" value={{pas._id}}>{{pas.nro_documento}}</option>
+                </select>
+                <!-------- validacion ---------->
+                <div *ngIf="pasajero.invalid" class="alert alert-danger ">
+                    <div *ngIf="precio.errors?.['required']">
+                        Debe introducir el Pasajero
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Categoria del Pasajero</label>
+                <select id="categoriaPasajero" class="form-select"
+                [(ngModel)]="pasaje.categoriaPasajero" name="categoriaPasajero" #categoria="ngModel" required>
+                  <option value="Menor">Menor</option>
+                  <option value="Adulto">Adulto</option>
+                  <option value="Jubilado">Jubilado</option>
+                </select>
+                <!-------- validacion ---------->
+                <div *ngIf="categoria.invalid" class="alert alert-danger ">
+                    <div *ngIf="categoria.errors?.['required']">
+                        La categoria es requerida
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fecha de la compra</label>
+                <input type="date" class="form-control" id="fechaCompra"
+                [(ngModel)]="pasaje.fechaCompra" name="fechaCompra" #fecha="ngModel" required>
+            </div>
+            <!-------- validacion ---------->
+            <div *ngIf="categoria.invalid" class="alert alert-danger ">
+                <div *ngIf="fecha.errors?.['required']">
+                    La fecha de compra es requerida
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Precio del Pasaje</label>
+                <input type="number" min="1" class="form-control" id="precioPasaje"
+                [(ngModel)]="pasaje.precioPasaje" name="precioPasaje" #precio="ngModel" required>
+                <!----------------Validacion ----------------->
+                <div *ngIf="precio.invalid" class="alert alert-danger ">
+                  <div *ngIf="precio.errors?.['required']">
+                      Debe introducir el precio del pasaje
+                  </div>
+                </div>
+            </div>
+            <div *ngIf="precio.valid && categoria.valid" class="mb-3">
+                <label for="form-label">El precio total es: {{calcularTotal() | currency}}</label>
+            </div>
+     </form>
+</div>
+<!-------------boton agregar nuevo pasaje-------------->
+<div class="row">
+    <div class="d-flex justify-content-center" *ngIf="this.modoEdicion">
+        <button type="submit" [disabled]="pasajeForm.form.invalid" class="btn btn-success " (click)="actualizarPasaje()" >GUARDAR CAMBIOS</button>
+    </div>
+    <div class="d-flex justify-content-center" *ngIf="!this.modoEdicion">
+        <button type="submit" [disabled]="pasajeForm.form.invalid" class="btn btn-primary "  (click)="agregarPasaje()" >GUARDAR</button>
+    </div>
+</div>
+
+

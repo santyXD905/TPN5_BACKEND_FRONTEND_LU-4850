@@ -1,0 +1,27 @@
+<div class="container">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+
+        <!--codigo principal-->
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="carousel-caption text-white" style="background-color: #45637d;">
+                <h1>{{libro.titulo}}</h1>
+                <p>{{libro.descripcion}}</p>
+            </div>
+
+            <img [src]=libro.imagen class="img-fluid w-100 h-auto">
+          </div>
+        </div>
+
+        <!--botones para mover el slider de izquierda a derecha-->
+        <button class="carousel-control-prev" type="button" (click)="anterior()">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" (click)="siguiente()">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+</div>

@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center pt-5 pb-5">
+    <button type="button" class="btn btn-primary btn-lg" (click)="obtenerTransacciones()">
+        RECUPERAR TODAS</button>  
+</div>
+<div class="d-flex justify-content-center">
+    <ol class="list-group list-group-numbered">
+        <li class="list-group-item" *ngFor="let trcc of transacciones">
+            "Moneda Origen: "{{trcc.monedaOrigen}}
+            "Moneda Destino: "{{trcc.monedaDestino}}
+        <br>
+            "Cantidad Origen: "{{trcc.cantidadOrigen}}
+            "Cantidad Destino: "{{trcc.cantidadDestino}}
+        <br>
+            "Email Cliente: "{{trcc.emailCliente}}
+            "Tasa Conversion: "{{ trcc.tasaConversion}}</li>
+            
+    </ol>  
+</div>
+
+<div class="d-flex justify-content-center pt-5 pb-5">
+    <button type="button" class="btn btn-primary btn-lg" (click)="obtenerTransaccionesOrigenDestino()" 
+    > RECUPERAR POR FILTRO</button>  
+</div>
+
+<div class="input-group mb-3">
+    <span class="input-group-text">ORIGEN: </span>
+    <select [(ngModel)]="origen" name="origen" class="form-select" >
+        <option value="USD">USD dolares</option>
+        <option value="EUR">EUR euros</option>
+        <option value="GBP">GBP libras</option>
+        <option value="JPY">JPY yenes</option>
+      </select>
+    <span class="input-group-text">DESTINO: </span>
+    <select [(ngModel)]="destino" name="origen" class="form-select">
+        <option value="USD">USD dolares</option>
+        <option value="EUR">EUR euros</option>
+        <option value="GBP">GBP libras</option>
+        <option value="JPY">JPY yenes</option>
+      </select>
+</div>
+
+
+<div class="d-flex justify-content-center">
+    <ol class="list-group list-group-numbered">
+        <li class="list-group-item" *ngFor="let trccFil of transaccionesFiltradas">
+            "Moneda Origen: "{{trccFil.monedaOrigen}}
+            "Moneda Destino: "{{trccFil.monedaDestino}}
+        <br>
+            "Cantidad Origen: "{{trccFil.cantidadOrigen}}
+            "Cantidad Destino: "{{trccFil.cantidadDestino}}
+        <br>
+            "Email Cliente: "{{trccFil.emailCliente}}
+            "Tasa Conversion: "{{ trccFil.tasaConversion}}</li>
+            
+    </ol>  
+</div>

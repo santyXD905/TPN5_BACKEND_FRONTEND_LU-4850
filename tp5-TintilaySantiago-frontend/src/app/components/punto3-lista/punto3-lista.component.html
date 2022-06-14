@@ -1,0 +1,39 @@
+<!------------------------------------lista (angular-datatable)--------------------------->
+<div class="d-flex mb-3">
+  <form action="" method="POST" class="d-flex">
+      <select class="form-select me-2" [(ngModel)]="categoriaFiltro" name="categoria" id="categoria">
+          <option value="" >Todos</option>
+          <option value="Menor" >Menor</option>
+          <option value="Adulto">Adulto</option>
+          <option value="Jubilado">Jubilado</option>
+      </select>
+      <button type="button" class="btn btn-success" (click)="filtrar()">Filtrar</button>
+  </form>
+</div>
+<div>
+  <table class="table table-responsive ">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>DNI del Pasajero</th>
+        <th>Categoria del Pasajero</th>
+        <th>Precio</th>
+        <th>Fecha</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pasaje of pasajes">
+        <td>{{pasaje._id}}</td>
+        <td>{{pasaje.pasajero.nro_documento}}</td>
+        <td>{{pasaje.categoriaPasajero}}</td>
+        <td>{{pasaje.precioPasaje | currency:'ARS'}}</td>
+        <td>{{pasaje.fechaCompra | date: 'mediumDate'}}</td>
+        <td>
+          <button class="btn btn-danger" (click)="eliminarPasaje(pasaje)"><i class="bi bi-eracer">eliminar</i></button>
+          <button class="btn btn-success" (click)="editarPasaje(pasaje)"><i class="bi bi-eracer">editar</i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

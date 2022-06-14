@@ -1,0 +1,122 @@
+<div class="container-fluid">
+    <div class="row">
+
+        <!--------------------tabla de divisas----------------->
+        <div class="col-md-8 col-sm-12 d-none d-md-block" >
+            <h1 class="text-center bg-success">conversor de divisas</h1>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col" class="text-center">
+                        <img src="assets/monedas/EEUU.png" alt="" style="width: 20px; height: 20px">
+                        <p>USD</p>
+                      </th>
+                      <th scope="col" class="text-center">
+                        <img src="assets/monedas/EUR.png" alt="" style="width: 20px; height: 20px">
+                        <p>EUR</p>
+                      </th>
+                      <th scope="col" class="text-center">
+                        <img src="assets/monedas/GBP.png" alt="" style="width: 20px; height: 20px">
+                        <p>GBP</p>
+                      </th>
+                      <th scope="col" class="text-center">
+                        <img src="assets/monedas/JPN.png" alt="" style="width: 20px; height: 20px">
+                        <p>JPY</p>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row"> 
+                        <p>
+                        <img src="assets/monedas/EEUU.png" alt="" aling="left "style="width: 20px; height: 20px"> 
+                         1 USD
+                         <br>
+                         inverse
+                        </p>  
+                      </th>
+                        <td *ngFor="let compUSD of tablaMonedasUSD">{{compUSD}}</td>
+                    
+                    </tr>
+                    <tr>
+                      <th scope="row"> 
+                        <p>
+                        <img src="assets/monedas/EUR.png" alt="" aling="left "style="width: 20px; height: 20px"> 
+                         1 EUR
+                         <br>
+                         inverse
+                        </p>  
+                      </th>
+                      <td *ngFor="let compEUR of tablaMonedasEUR">{{compEUR}}</td>
+                    </tr>
+                    <tr>
+                       <th scope="row"> 
+                            <p>
+                            <img src="assets/monedas/GBP.png" alt="" aling="left "style="width: 20px; height: 20px"> 
+                             1 GBP
+                             <br>
+                             inverse
+                            </p>  
+                        </th>
+                        <td *ngFor="let compGBP of tablaMonedasGBP">{{compGBP}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"> 
+                            <p>
+                            <img src="assets/monedas/JPN.png" alt="" aling="left "style="width: 20px; height: 20px"> 
+                             1 JPN
+                             <br>
+                             inverse
+                            </p>  
+                          </th>
+                          <td *ngFor="let compJPY of tablaMonedasJPY">{{compJPY}}</td>
+                      </tr>
+                  </tbody>
+            </table>
+        </div>
+
+        <!------------------formulario conversor de divisas------------------>
+        <div class="col-md-4 " style="background-color:rgb(71, 71, 196)">
+            <h3 class="text-center bg-danger">conversor de divisas</h3>
+            <form>
+                <div class="mb-3">
+                    <label class="form-label text-white">Email Cliente</label>
+                    <input [(ngModel)]="moneda.emailCliente" name="email" type="email" class="form-control" >
+                </div>
+                <div class="mb-3">
+                    <label class="form-label text-white">Tasa Conversion</label>
+                    <input [(ngModel)]="moneda.tasaConversion" name="tasa" type="number" class="form-control" >
+                </div>
+                <div class="mb-3">
+                  <label class="form-label text-white">Cantidad</label>
+                  <input [(ngModel)]="moneda.cantidadOrigen" name="cantidad" type="number" class="form-control" >
+                </div>
+                <div class="mb-3">
+                   <label for="De" class="form-label text-white">De</label>
+                   <select [(ngModel)]="moneda.monedaOrigen" name="monEntrada" class="form-select" >
+                     <option value="USD">USD dolares</option>
+                     <option value="EUR">EUR euros</option>
+                     <option value="GBP">GBP libras</option>
+                     <option value="JPY">JPY yenes</option>
+                   </select>
+                </div>
+                <div class="mb-3">
+                    <label for="A" class="form-label text-white">A</label>
+                    <select [(ngModel)]="moneda.monedaDestino" name="monSalida"class="form-select" >
+                      <option value="USD">USD dolares</option>
+                      <option value="EUR">EUR euros</option>
+                      <option value="GBP">GBP libras</option>
+                      <option value="JPY">JPY yenes</option>
+                    </select>
+                 </div>
+                 <div class="mb-3">
+                    <label class="border border-3"><h2>El resultado es: {{moneda.cantidadDestino}}</h2></label>
+                 </div>
+                <div class="d-grid gap-2">
+                   <button  type="submit" class="btn btn-warning" (click)="this.convertirMoneda()">Convertir -></button>
+                </div>
+              </form>
+        </div>
+      </div>
+</div>
